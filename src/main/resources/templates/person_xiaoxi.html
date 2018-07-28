@@ -81,8 +81,8 @@
                          alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>姓名</p>
-                    <p class="designation">电话</p>
+                    <p th:text="'姓名:'+${user.name}"></p>
+                    <p class="designation" th:text="'电话:'+${user.phone}"></p>
                 </div>
             </div>
 
@@ -104,23 +104,22 @@
         <div class="row">
             <div class="card">
                 <h3 class="card-title xiaoxiliebiao">消息列表</h3>
-                <ol class="x_ul">
-                    <li>
-                        <div class="news-item" th:each="record:${applyRecords}">
+                <div class="news-item" th:each="record,stat :${applyRecords}">
 
-                            <span class="news-date" th:text="${record.companyIdentification}+'向您请求查看学历有关信息'">
+                            <span class="news-date"
+                                  th:text="${stat.index+1}+'. '+${record.companyName}+'向您请求查看'+${record.msgTypeStr}+'有关信息'">
+
                             </span>
 
-                            <span class="anniu">
-                                <button class="btn btn-primary btn-xs" id="abtn1"
-                                        onclick="changeAgreeState1()">同意</button>
-                                <button class="btn btn-danger btn-xs" id="rbtn1"
-                                        onclick="changeRefuseState1()">拒绝</button>
+                    <span class="anniu">
+                                <button class="btn btn-primary btn-xs" th:id="'abtn'+${stat.index}"
+                                        th:onclick="'javascript:agree('+${record.id}+','+${record.personIdentification}+','+${stat.index}+')'">同意</button>
+                                <button class="btn btn-danger btn-xs" th:id="'rbtn'+${stat.index}"
+                                        th:onclick="'javascript:disagree('+${record.id}+','+${record.personIdentification}+','+${stat.index}+')'">拒绝</button>
+
                             </span>
-                            <hr>
-                        </div>
-                    </li>
-                </ol>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>
@@ -132,53 +131,42 @@
 
     <script>
 
-		function changeAgreeState1() {
-			var abtn1 = document.getElementById('abtn1');
-			var rbtn1 = document.getElementById('rbtn1');
-			abtn1.innerHTML = "已同意";
-			// abtn1.style.color = grey;
-			abtn1.disabled = true;
-			rbtn1.disabled = true;
+		function agree(applyId, identification, index) {
+			var abtn = document.getElementById('abtn' + index);
+			var rbtn = document.getElementById('rbtn' + index);
+			abtn.innerHTML = "已同意";
+			// abtn1.style.color = grey;  1 同意  0  拒绝
+			abtn.disabled = true;
+			rbtn.disabled = true;
+			$.ajax({
+				url: "/user/agree",
+				data: {
+					applyId: applyId,
+					identification: identification
+				},
+				success: function (data) {
+				}
+			});
+
 		}
 
-		function changeRefuseState1() {
-			var abtn1 = document.getElementById('abtn1');
-			var rbtn1 = document.getElementById('rbtn1');
-			rbtn1.innerHTML = "已拒绝";
-			abtn1.disabled = true;
-			rbtn1.disabled = true;
-		}
+		function disagree(applyId, identification, index) {
+			var abtn = document.getElementById('abtn' + index);
+			var rbtn = document.getElementById('rbtn' + index);
+			rbtn.innerHTML = "已拒绝";
+			// abtn1.style.color = grey;  1 同意  0  拒绝
+			abtn.disabled = true;
+			rbtn.disabled = true;
+			$.ajax({
+				url: "/user/disagree",
+				data: {
+					applyId: applyId,
+					identification: identification
+				},
+				success: function (data) {
+				}
+			});
 
-		function changeAgreeState2() {
-			var abtn2 = document.getElementById('abtn2');
-			var rbtn2 = document.getElementById('rbtn2');
-			abtn2.innerHTML = "已同意";
-			abtn2.disabled = true;
-			rbtn2.disabled = true;
-		}
-
-		function changeRefuseState2() {
-			var abtn2 = document.getElementById('abtn2');
-			var rbtn2 = document.getElementById('rbtn2');
-			rbtn2.innerHTML = "已拒绝";
-			abtn2.disabled = true;
-			rbtn2.disabled = true;
-		}
-
-		function changeAgreeState3() {
-			var abtn3 = document.getElementById('abtn3');
-			var rbtn3 = document.getElementById('rbtn3');
-			abtn3.innerHTML = "已同意";
-			abtn3.disabled = true;
-			rbtn3.disabled = true;
-		}
-
-		function changeRefuseState3() {
-			var abtn3 = document.getElementById('abtn3');
-			var rbtn3 = document.getElementById('rbtn3');
-			rbtn3.innerHTML = "已拒绝";
-			abtn3.disabled = true;
-			rbtn3.disabled = true;
 		}
 
     </script>

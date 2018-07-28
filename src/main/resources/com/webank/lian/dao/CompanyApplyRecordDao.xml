@@ -11,6 +11,7 @@
         <result column="status" property="status" jdbcType="INTEGER"/>
     </resultMap>
 
+
     <!--auto generated Code-->
     <sql id="Base_Column_List">
         id,
@@ -43,14 +44,24 @@
     <!--auto generated Code-->
     <update id="updateStatus">
         UPDATE company_apply_record
-        SET status= #{companyApplyRecord.status,jdbcType=INTEGER}
-        WHERE id = #{companyApplyRecord.id,jdbcType=INTEGER}
+        SET status= #{status}
+        WHERE id = #{id}
     </update>
-    <select id="getCompanyApplyRecordsByPersonIdentification" resultType="com.webank.lian.domain.CompanyApplyRecord">
+
+    <select id="listCompanyVoByPersonIdentificationAndStatus" resultType="com.webank.lian.vo.CompanyApplyVo">
         select
-        <include refid="Base_Column_List"/>
-        FROM company_apply_record
-        WHERE person_identification=#{identification}
+        r.*,c.name as company_name
+        FROM company_apply_record r JOIN company c
+        ON r.company_identification = c.identification
+        WHERE r.person_identification=#{pid} and r.status= #{status}
+    </select>
+
+    <select id="listCompanyVoByCompanyIdentificationAndStatus" resultType="com.webank.lian.vo.CompanyApplyVo">
+        select
+        r.*,c.name as company_name
+        FROM company_apply_record r JOIN company c
+        ON r.company_identification = c.identification
+        WHERE r.company_identification=#{cid} and r.status= #{status}
     </select>
 </mapper>
 

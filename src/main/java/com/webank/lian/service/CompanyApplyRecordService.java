@@ -2,6 +2,7 @@ package com.webank.lian.service;
 
 import com.webank.lian.dao.CompanyApplyRecordDao;
 import com.webank.lian.domain.CompanyApplyRecord;
+import com.webank.lian.vo.CompanyApplyVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +14,15 @@ public class CompanyApplyRecordService {
 	@Autowired
 	CompanyApplyRecordDao companyApplyRecordDao;
 	
-	public List<CompanyApplyRecord> getCompanyApplyRecordsByPersonIdentification(String identification) {
-		return companyApplyRecordDao.getCompanyApplyRecordsByPersonIdentification(identification);
+	public List<CompanyApplyVo> listCompanyVoByPersonIdentificationAndStatus(String identification, Integer status) {
+		return companyApplyRecordDao.listCompanyVoByPersonIdentificationAndStatus(identification, status);
 	}
 	
 	public int addCompanyApplyRecord(CompanyApplyRecord companyApplyRecord) {
 		return companyApplyRecordDao.insert(companyApplyRecord);
 	}
 	
-	public int updateStatus(Integer companyApplyRecordId, Integer status) {
-		return companyApplyRecordDao.updateStatus(companyApplyRecordId, status);
+	public int updateStatus(Integer applyId, Integer status) {
+		return companyApplyRecordDao.updateStatus(applyId, status);
 	}
 }

@@ -225,7 +225,8 @@
 				success: function (data) {
 					if (data.status == 0) {
 						var userId = data.data;
-						window.location.href = "/index/user/" + userId;
+						var identification = username_1;
+						window.location.href = "/index/user/" + identification;
 					} else {
 						alert(data.message);
 					}
