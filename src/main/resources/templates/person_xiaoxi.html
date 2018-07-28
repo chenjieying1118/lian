@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>金链萌</title>
+
+    <style>
+        .xiaoxiliebiao {
+            position: relative;
+            left: 3%;
+        }
+
+        ol.x_ul {
+            list-style-type: decimal;
+            /* border: 1px solid red; */
+        }
+
+        ol li {
+            margin-top: 10px;
+        }
+
+        .anniu {
+            /* border: 1px solid red; */
+            position: relative;
+            right: -50%;
+        }
+
+        /* .last_btn{
+          position: relative;
+          right: -73.5%;
+        } */
+    </style>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
+
+</head>
+
+<body class="sidebar-mini fixed">
+<div class="wrapper">
+
+    <!-- 导航栏 -->
+    <header class="main-header hidden-print">
+        <a class="logo">logo金链萌</a>
+        <nav class="navbar navbar-static-top">
+            <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+            <div class="navbar-custom-menu">
+                <ul class="top-nav">
+                    <!-- 消息通知 -->
+                    <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown"
+                                                              aria-expanded="false"><i
+                            class="fa fa-bell-o fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li class="not-head">你有新的通知消息</li>
+                        </ul>
+                    </li>
+                    <!--个人中心-->
+                    <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                                            aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                        <ul class="dropdown-menu settings-menu">
+                            <li><a href="#"><i class="fa fa-cog fa-lg"></i>设置</a></li>
+                            <li><a href="#"><i class="fa fa-user fa-lg"></i>个人中心</a></li>
+                            <li><a href="#"><i class="fa fa-sign-out fa-lg"></i>登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 侧边栏-->
+    <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+
+            <!-- 头像 名称 -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+                         alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>姓名</p>
+                    <p class="designation">电话</p>
+                </div>
+            </div>
+
+            <!-- 信息展示项 -->
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><i class="fa fa-dashboard"></i><span>我的授权</span></a></li>
+                <li><a href="yinhang.html"><i class="fa fa-th-list"></i><span>银行流水</span></a></li>
+                <li><a href="caichan.html"><i class="fa fa-edit"></i><span></span>财产证明</span></a></li>
+                <li><a href="huji.html"><i class="fa fa-laptop"></i><span></span>户籍证明</a></span></li>
+                <li><a href="yiliao.html"><i class="fa fa-file-text"> </i><span></span>医疗记录</span></a></li>
+                <li><a href="xueli.html"><i class="fa fa-circle-o"></i><span></span>学历信息</span></a></li>
+            </ul>
+
+        </section>
+    </aside>
+
+    <!-- 内容区域 -->
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="card">
+                <h3 class="card-title xiaoxiliebiao">消息列表</h3>
+                <ol class="x_ul">
+                    <li>
+                        <div class="news-item">
+                            <span class="news-date"> XX 向您请求查看学历有关信息<span>
+                            <span class="anniu">
+                              <button class="btn btn-primary btn-xs" id="abtn1"
+                                      onclick="changeAgreeState1()">同意</button>
+                              <button class="btn btn-danger btn-xs" id="rbtn1"
+                                      onclick="changeRefuseState1()">拒绝</button>
+                            </span>
+                            <hr>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="news-item">
+                            <span class="news-date"> XX 向您请求查看银行流水账号<span>
+                            <span class="anniu">
+                                <button class="btn btn-primary btn-xs" id="abtn2"
+                                        onclick="changeAgreeState2()">同意</button>
+                                <button class="btn btn-danger btn-xs" id="rbtn2"
+                                        onclick="changeRefuseState2()">拒绝</button>
+                            </span>
+                            <hr>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="news-item">
+                            <span class="news-date"> XX 请求向您查看医疗记录信息<span>
+                            <span class="anniu">
+                                <button class="btn btn-primary btn-xs" id="abtn3"
+                                        onclick="changeAgreeState3()">同意</button>
+                                <button class="btn btn-danger btn-xs" id="rbtn3"
+                                        onclick="changeRefuseState3()">拒绝</button>
+                            </span>
+                            <hr>
+                        </div>
+                    </li>
+                </ol>
+                <!-- <button class="btn btn-primary last_btn">提交</button> -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+
+    <script>
+
+		function changeAgreeState1() {
+			var abtn1 = document.getElementById('abtn1');
+			var rbtn1 = document.getElementById('rbtn1');
+			abtn1.innerHTML = "已同意";
+			// abtn1.style.color = grey;
+			abtn1.disabled = true;
+			rbtn1.disabled = true;
+		}
+
+		function changeRefuseState1() {
+			var abtn1 = document.getElementById('abtn1');
+			var rbtn1 = document.getElementById('rbtn1');
+			rbtn1.innerHTML = "已拒绝";
+			abtn1.disabled = true;
+			rbtn1.disabled = true;
+		}
+
+		function changeAgreeState2() {
+			var abtn2 = document.getElementById('abtn2');
+			var rbtn2 = document.getElementById('rbtn2');
+			abtn2.innerHTML = "已同意";
+			abtn2.disabled = true;
+			rbtn2.disabled = true;
+		}
+
+		function changeRefuseState2() {
+			var abtn2 = document.getElementById('abtn2');
+			var rbtn2 = document.getElementById('rbtn2');
+			rbtn2.innerHTML = "已拒绝";
+			abtn2.disabled = true;
+			rbtn2.disabled = true;
+		}
+
+		function changeAgreeState3() {
+			var abtn3 = document.getElementById('abtn3');
+			var rbtn3 = document.getElementById('rbtn3');
+			abtn3.innerHTML = "已同意";
+			abtn3.disabled = true;
+			rbtn3.disabled = true;
+		}
+
+		function changeRefuseState3() {
+			var abtn3 = document.getElementById('abtn3');
+			var rbtn3 = document.getElementById('rbtn3');
+			rbtn3.innerHTML = "已拒绝";
+			abtn3.disabled = true;
+			rbtn3.disabled = true;
+		}
+
+    </script>
+
+
+</body>
+</html>

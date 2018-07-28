@@ -31,7 +31,7 @@ public class UserController {
 				= companyApplyRecordService.getCompanyApplyRecordsByPersonIdentification(identification);
 		
 		model.addAttribute("applyRecords", applyRecords);
-		return "xiaoxi";
+		return "person_xiaoxi";
 	}
 	
 	
