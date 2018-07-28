@@ -106,43 +106,21 @@
                 <h3 class="card-title xiaoxiliebiao">消息列表</h3>
                 <ol class="x_ul">
                     <li>
-                        <div class="news-item" th:each="">
-                            <span class="news-date"> XX 向您请求查看学历有关信息<span>
-                            <span class="anniu">
-                              <button class="btn btn-primary btn-xs" id="abtn1"
-                                      onclick="changeAgreeState1()">同意</button>
-                              <button class="btn btn-danger btn-xs" id="rbtn1"
-                                      onclick="changeRefuseState1()">拒绝</button>
+                        <div class="news-item" th:each="record:${applyRecords}">
+
+                            <span class="news-date" th:text="${record.companyIdentification}+'向您请求查看学历有关信息'">
                             </span>
-                            <hr>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="news-item">
-                            <span class="news-date"> XX 向您请求查看银行流水账号<span>
+
                             <span class="anniu">
-                                <button class="btn btn-primary btn-xs" id="abtn2"
-                                        onclick="changeAgreeState2()">同意</button>
-                                <button class="btn btn-danger btn-xs" id="rbtn2"
-                                        onclick="changeRefuseState2()">拒绝</button>
-                            </span>
-                            <hr>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="news-item">
-                            <span class="news-date"> XX 请求向您查看医疗记录信息<span>
-                            <span class="anniu">
-                                <button class="btn btn-primary btn-xs" id="abtn3"
-                                        onclick="changeAgreeState3()">同意</button>
-                                <button class="btn btn-danger btn-xs" id="rbtn3"
-                                        onclick="changeRefuseState3()">拒绝</button>
+                                <button class="btn btn-primary btn-xs" id="abtn1"
+                                        onclick="changeAgreeState1()">同意</button>
+                                <button class="btn btn-danger btn-xs" id="rbtn1"
+                                        onclick="changeRefuseState1()">拒绝</button>
                             </span>
                             <hr>
                         </div>
                     </li>
                 </ol>
-                <!-- <button class="btn btn-primary last_btn">提交</button> -->
             </div>
         </div>
     </div>
