@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webank.lian.dao.CompanyApplyRecordDao">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.webank.lian.domain.CompanyApplyRecord">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="company_identification" property="companyIdentification" jdbcType="VARCHAR"/>
+        <result column="person_identification" property="personIdentification" jdbcType="VARCHAR"/>
+        <result column="msg_type" property="msgType" jdbcType="INTEGER"/>
+        <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        company_identification,
+        person_identification,
+        msg_type,
+        apply_date,
+        status
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="companyApplyRecord.id">
+        INSERT INTO company_apply_record (
+            id,
+            company_identification,
+            person_identification,
+            msg_type,
+            apply_date,
+            status
+        ) VALUES (
+            #{companyApplyRecord.id,jdbcType=INTEGER},
+            #{companyApplyRecord.companyIdentification,jdbcType=VARCHAR},
+            #{companyApplyRecord.personIdentification,jdbcType=VARCHAR},
+            #{companyApplyRecord.msgType,jdbcType=INTEGER},
+            #{companyApplyRecord.applyDate,jdbcType=TIMESTAMP},
+            #{companyApplyRecord.status,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="updateStatus">
+        UPDATE company_apply_record
+        SET status= #{companyApplyRecord.status,jdbcType=INTEGER}
+        WHERE id = #{companyApplyRecord.id,jdbcType=INTEGER}
+    </update>
+    <select id="getCompanyApplyRecordsByPersonIdentification" resultType="com.webank.lian.domain.CompanyApplyRecord">
+        select
+        <include refid="Base_Column_List"/>
+        FROM company_apply_record
+        WHERE person_identification=#{identification}
+    </select>
+</mapper>
+

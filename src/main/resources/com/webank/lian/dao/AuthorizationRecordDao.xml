@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.webank.lian.dao.AuthorizationRecordDao">
+    <!--auto generated Code-->
+    <resultMap id="BaseResultMap" type="com.webank.lian.domain.AuthorizationRecord">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="apply_id" property="applyId" jdbcType="INTEGER"/>
+        <result column="result" property="result" jdbcType="INTEGER"/>
+        <result column="solve_time" property="solveTime" jdbcType="TIMESTAMP"/>
+        <result column="person_identification" property="personIdentification" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="Base_Column_List">
+        id,
+        apply_id,
+        result,
+        solve_time,
+        person_identification
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="authorizationRecord.id">
+        INSERT INTO authorization_record (
+            id,
+            apply_id,
+            result,
+            solve_time,
+            person_identification
+        ) VALUES (
+            #{authorizationRecord.id,jdbcType=INTEGER},
+            #{authorizationRecord.applyId,jdbcType=INTEGER},
+            #{authorizationRecord.result,jdbcType=INTEGER},
+            #{authorizationRecord.solveTime,jdbcType=TIMESTAMP},
+            #{authorizationRecord.personIdentification,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <select id="getAuthorizationByApplyId" resultType="com.webank.lian.domain.AuthorizationRecord">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM authorization_record
+        WHERE applyId=#{applyId}
+    </select>
+    <select id="getAuthorizationsByPersonIdentification" resultType="com.webank.lian.domain.AuthorizationRecord">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM authorization_record
+        WHERE person_identification=#{person_identification}
+    </select>
+</mapper>
+
