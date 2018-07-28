@@ -62,4 +62,16 @@ public class Company {
 	public void setIdentitication(String identitication) {
 		this.identitication = identitication;
 	}
+	
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Company{");
+		sb.append("id=").append(id);
+		sb.append(", name='").append(name).append('\'');
+		sb.append(", password='").append(password).append('\'');
+		sb.append(", address='").append(address).append('\'');
+		sb.append(", identitication='").append(identitication).append('\'');
+		sb.append('}');
+		return sb.toString();
+	}
 }

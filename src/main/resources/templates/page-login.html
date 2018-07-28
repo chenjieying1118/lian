@@ -141,9 +141,7 @@
                     <input id="password_1" class="password" name="password" placeholder="请输入密码">
                 </div>
                 <div class="login_res">
-                    <a href="index.html">
-                        <button class="lo_btn" onclick="login_user()">登录</button>
-                    </a>
+                    <button class="lo_btn" onclick="login_user()">登录</button>
                     <button class="res_btn">注册</button>
                 </div>
 
@@ -160,7 +158,7 @@
                     <input type="password" id="password_2" class="password" name="password" placeholder="请输入密码">
                 </div>
                 <div class="login_res">
-                    <a href="index.html">
+                    <a href="user_index.html">
                         <button class="lo_btn" onclick="login_company()">登录</button>
                     </a>
                     <button class="res_btn">注册</button>
@@ -218,17 +216,16 @@
 	function login_user() {
 		var username_1 = $("#username_1").val();
 		var password_1 = $("#password_1").val();
-		alert(username_1 + "," + password_1);
 		if ((username_1 == "" || username_1 == null) || (password_1 == "" || password_1 == null)) {
-			alert("用户名或密码不能为空！");
+			alert("身份证或密码不能为空！");
 		} else {
 			$.ajax({
 				url: "/person_do_login",
-				data: {username: username_1, password: password_1},
+				data: {identification: username_1, password: password_1},
 				success: function (data) {
 					if (data.status == 0) {
-						var userId = data.userId
-						self.location = "/index/" + userId;
+						var userId = data.data;
+						window.location.href = "/index/user/" + userId;
 					} else {
 						alert(data.message);
 					}
@@ -240,20 +237,16 @@
 	function login_company() {
 		var username_2 = $("#username_2").val();
 		var password_2 = $("#password_2").val();
-		alert(username_2 + "," + password_2);
 		if ((username_2 == "" || username_2 == null) || (password_2 == "" || password_2 == null)) {
-			alert("用户名或密码不能为空！");
+			alert("企业识别号或密码不能为空！");
 		} else {
 			$.ajax({
 				url: "/com_do_login",
-				type:"POST",
-				data: {
-					username: username_2,
-                    password: password_2
-                },
+				data: {identification: username_2, password: password_2},
 				success: function (data) {
+					var comId = data.data
 					if (data.status == 0) {
-						self.location = "/index/" + userId;
+						self.location = "/index/company/" + comId;
 					} else {
 						alert(data.message);
 					}

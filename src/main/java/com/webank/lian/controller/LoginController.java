@@ -21,14 +21,14 @@ public class LoginController {
 	
 	@RequestMapping(value = "/person_do_login")
 	@ResponseBody
-	public Result<Long> personDoLogin(@RequestParam String identification,
+	public Result personDoLogin(@RequestParam String identification,
 	                                  @RequestParam String password) {
 		return userService.login(identification, password);
 	}
 	
 	@RequestMapping(value = "/com_do_login")
 	@ResponseBody
-	public Result<Long> comDoLogin(@RequestParam String name,
+	public Result comDoLogin(@RequestParam String name,
 	                               @RequestParam String password) {
 		return userService.login(name, password);
 	}

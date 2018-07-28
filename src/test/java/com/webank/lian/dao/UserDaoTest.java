@@ -20,6 +20,12 @@ public class UserDaoTest {
 	
 	@Test
 	public void getUserById() {
-		System.out.println(userDao.getUserById(1L));
+		System.out.println(userDao.getUserById(1));
+	}
+	
+	
+	@Test
+	public void getUserByIdentification() {
+		System.out.println(userDao.getUserByIdentification("452223199302067019"));
 	}
 }

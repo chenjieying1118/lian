@@ -62,4 +62,16 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", identification='").append(identification).append('\'');
+        sb.append(", phone='").append(phone).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

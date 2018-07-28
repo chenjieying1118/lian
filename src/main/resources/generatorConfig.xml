@@ -31,11 +31,7 @@
             <property name="constructorBased" value="true"/>
         </javaModelGenerator>
 
-
-        <table tableName="company" domainObjectName="Company">
-            <property name="modelOnly" value="true"/>
-        </table>
-        <table tableName="user" domainObjectName="User">
+        <table tableName="company_apply_record" domainObjectName="CompanyApplyRecord">
             <property name="modelOnly" value="true"/>
         </table>
 

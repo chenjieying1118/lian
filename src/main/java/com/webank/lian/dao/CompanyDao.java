@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CompanyDao {
     
-    int insert(@Param("company") Company company);
-    
     Company getCompanyByIdentification(@Param("identification") String identification);
+    
+    Company getCompanyById(@Param("id") Integer id);
 }
 

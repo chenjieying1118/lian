@@ -17,5 +17,5 @@ public interface UserDao {
     
     User getUserByIdentification(@Param("identification") String identification);
     
-    User getUserById(@Param("Id") Integer id);
+    User getUserById(@Param("id") Integer id);
 }

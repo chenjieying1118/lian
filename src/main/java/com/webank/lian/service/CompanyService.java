@@ -32,4 +32,8 @@ public class CompanyService {
 		
 		return Result.success(company.getId());
 	}
+	
+	public Company getCompanyById(Integer id) {
+		return companyDao.getCompanyById(id);
+	}
 }
